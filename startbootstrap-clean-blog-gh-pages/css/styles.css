@@ -62,7 +62,7 @@
   --bs-body-font-weight: 400;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
-  --bs-body-bg: #000;
+  --bs-body-bg: #fff;
   --bs-border-width: 1px;
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
@@ -2799,11 +2799,11 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #9618cd;
-  --bs-btn-border-color: #9618cd;
+  --bs-btn-bg: #0085A1;
+  --bs-btn-border-color: #0085A1;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #7612a0;
-  --bs-btn-hover-border-color: #7612a0;
+  --bs-btn-hover-bg: #007189;
+  --bs-btn-hover-border-color: #006a81;
   --bs-btn-focus-shadow-rgb: 38, 151, 175;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #006a81;
@@ -10767,11 +10767,11 @@ header.masthead .post-heading .meta a {
 }
 
 .post-preview > a {
-  color: #fff;
+  color: #212529;
 }
 .post-preview > a:focus, .post-preview > a:hover {
   text-decoration: none;
-  color: #9618cd;
+  color: #0085A1;
 }
 .post-preview > a > .post-title {
   font-size: 1.875rem;
