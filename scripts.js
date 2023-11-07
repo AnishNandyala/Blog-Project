@@ -22,3 +22,23 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+const commentContainer = document.getElementById('all-comments');
+document.getElementById('comment').addEventListener('keypress', function (ev) {
+    if (ev.key == 'Enter') {
+        addComment(ev);
+    }
+});
+
+function addComment (ev) {
+    let commentText, cardDiv, cardBodyDiv;
+    const textBox = document.createElement('div');
+    cardDiv = document.createElement('div');
+    cardDiv.className = 'card mb-4';
+    commentText = document.getElementById('comment').value;
+    document.getElementById('comment').value = '';
+    textBox.style.paddingLeft = 10;
+    textBox.innerHTML = commentText;
+    cardDiv.append(textBox);
+    commentContainer.appendChild(cardDiv);
+}
