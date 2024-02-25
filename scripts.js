@@ -34,12 +34,14 @@ document.getElementById('comment').addEventListener('keypress', function (ev) {
 
 document.getElementById('name').addEventListener('keypress', function (ev) {
     if (ev.key == 'Enter') {
-        addComment(ev);
+        if (document.getElementById('comment').value.match(/\S/)) {
+            addComment(ev);
+        }
     }
 });
 
 function addComment (ev) {
-    let commentText, nameText, cardDiv, cardBodyDiv, dFlexOuter, dFlexInner, likeDiv, likeButton, likeCounter;
+    let commentText, nameText, cardDiv, cardBodyDiv, dFlexOuter, dFlexInner, likeDiv, likeButton;
     const commentBox = document.createElement('div');
     const nameBox = document.createElement('div');
     cardDiv = document.createElement('div');
@@ -54,11 +56,11 @@ function addComment (ev) {
     dFlexOuter.className = 'd-flex justify-content-between';
     dFlexInner.className = 'd-flex flex-row align-items-center';
     likeDiv.className = 'd-flex flex-row align-items-center';
-    likeButton.className = 'far fa-thumbs-up mx-2 fa-xs text-white';
-    likeButton.setAttribute('id','like-button');
-    likeCounter.className = 'small text-muted mb-0';
+    likeButton.className = 'far fa-thumbs-up mx-2 fa-xs text-white like-button';
+    likeButton.setAttribute('onclick','myFunction(this)');
+    /*likeCounter.className = 'small text-muted mb-0';
     likeCounter.setAttribute('id','like-counter');
-    likeCounter.innerHTML = "0";
+    likeCounter.innerHTML = "0";*/
     nameBox.className = 'small mb-0 ms-2';
     nameText = document.getElementById('name').value;
     document.getElementById('name').value = '';
@@ -68,9 +70,9 @@ function addComment (ev) {
     commentBox.innerHTML = commentText;
     cardBodyDiv.style.marginTop = "30px";
     dFlexInner.style.marginTop = "50px";
-    likeCounter.style.marginTop = "30px";
     likeDiv.style.marginTop = "20px";
-    likeDiv.append(likeButton, likeCounter);
+    likeDiv.style.marginBottom = "10px";
+    likeDiv.append(likeButton);
     dFlexInner.append(nameBox);
     dFlexOuter.append(dFlexInner, likeDiv);
     cardBodyDiv.append(commentBox, dFlexOuter);
@@ -78,3 +80,22 @@ function addComment (ev) {
     commentContainer.appendChild(cardDiv);
 }
 
+function hasClass (elem, className) {
+    return elem.className.split(' ').indexOf(className) > -1;
+}
+
+document.getElementById('all-comments').addEventListener('click', function (e) {
+    if (e.target.className == 'd-flex flex-row align-items-center') {
+        for (const child of e.target.children) {
+            if (child.className == 'small text-muted mb-0') {
+                child.innerHTML = Number.parseInt(child.innerHTML) + 1;
+            }
+        }
+    }
+});
+
+function myFunction(x) {
+    console.log("Before toggle:", x.classList.contains("fa-solid"));
+    x.classList.toggle("fa-solid");
+    console.log("After toggle:", x.classList.contains("fa-solid"));
+}
